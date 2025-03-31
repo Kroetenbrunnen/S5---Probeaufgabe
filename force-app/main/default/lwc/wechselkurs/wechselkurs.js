@@ -1,3 +1,12 @@
+/**
+* @name wechselkurs
+* @type Lightning Web Component
+* @description Lightning Web Component for the wechselkurs Component
+*
+* @version 31.03.2025
+* @author Alec Damm
+*/
+
 import { LightningElement, wire } from 'lwc';
 import getExchangeRate from '@salesforce/apex/wechselkurs_Ctr.getExchangeRate';
 import Country from '@salesforce/label/c.Country'
