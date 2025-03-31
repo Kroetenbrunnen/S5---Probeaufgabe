@@ -11,6 +11,7 @@ import { LightningElement, wire } from 'lwc';
 import getExchangeRate from '@salesforce/apex/wechselkurs_Ctr.getExchangeRate';
 import Country from '@salesforce/label/c.Country'
 import ExchangeRate from '@salesforce/label/c.ExchangeRate'
+import ExchangeRates from '@salesforce/label/c.ExchangeRates'
 
 export default class Wechselkurs extends LightningElement {
     isLoading = true;
@@ -24,7 +25,8 @@ export default class Wechselkurs extends LightningElement {
 
     label = {
         Country,
-        ExchangeRate
+        ExchangeRate,
+        ExchangeRates
     }
 
     @wire(getExchangeRate)

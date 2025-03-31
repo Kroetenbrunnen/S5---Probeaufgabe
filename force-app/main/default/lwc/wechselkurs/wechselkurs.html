@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Wechselkurs" icon-name="utility:currency">
+    <lightning-card title={label.ExchangeRates} icon-name="utility:currency">
         <lightning-spinner if:true={isLoading} alternative-text="Loading" size="medium"></lightning-spinner>
         <template if:false={isLoading}>
             <div style="max-height: 300px; overflow-y: auto;">
