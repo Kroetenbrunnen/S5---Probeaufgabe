@@ -27,7 +27,6 @@ export default class Wechselkurs extends LightningElement {
         ExchangeRate
     }
 
-    /**
     @wire(getExchangeRate)
     wiredGetExchangeRate({error, data}) {
         if(data) {
@@ -38,9 +37,9 @@ export default class Wechselkurs extends LightningElement {
             this.error = error;
             this.exchangeRates = [];
         }
-    }*/
+    }
         
-       
+    /**
     connectedCallback() {
         const response = {
             base: "EUR",
@@ -67,6 +66,7 @@ export default class Wechselkurs extends LightningElement {
         this.filteredRates = this.exchangeRates;
         this.isLoading = false;
     }
+    */
 
     formatExchangeRate(response){
         const formatedExchangeRates = Object.keys(response.rates).map(currency => {
