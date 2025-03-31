@@ -8,7 +8,7 @@
 */
 
 public with sharing class wechselkurs_Ctr {
-    private static final String FIXER_API_URL = 'http://data.fixer.io/api/latest';
+    private static final String FIXER_API_URL = 'http://data.fixer.io/api/';
 
     @AuraEnabled(cacheable=true)
     public static Map<String, Object> getExchangeRate() {
@@ -16,7 +16,25 @@ public with sharing class wechselkurs_Ctr {
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint(FIXER_API_URL + '?access_key=' + accessKey);
+        request.setEndpoint(FIXER_API_URL + 'latest?access_key=' + accessKey);
+        request.setMethod('GET');
+        
+        HttpResponse response = http.send(request);
+        if (response.getStatusCode() == 200) {
+            Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            return result;
+        } else {
+            throw new CalloutException('Failed to get response from Fixer API');
+        }
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static Map<String, Object> convertCurrency(String fromCountry, String toCountry, Decimal amount) {
+        String accessKey = API_Setting__mdt.getInstance('Fixer_API').API_Key__c;
+
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(FIXER_API_URL + 'convert?access_key=' + accessKey + '&from=' + fromCountry + '&to=' + toCountry + '&amount=' + amount);
         request.setMethod('GET');
         
         HttpResponse response = http.send(request);
