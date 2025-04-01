@@ -29,12 +29,12 @@ public with sharing class wechselkurs_Ctr {
     }
 
     @AuraEnabled(cacheable=true)
-    public static Map<String, Object> convertCurrency(String fromCountry, String toCountry, Decimal amount) {
+    public static Map<String, Object> convertCurrency(String fromCurrency, String toCurrency, Decimal amount) {
         String accessKey = API_Setting__mdt.getInstance('Fixer_API').API_Key__c;
 
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint(FIXER_API_URL + 'convert?access_key=' + accessKey + '&from=' + fromCountry + '&to=' + toCountry + '&amount=' + amount);
+        request.setEndpoint(FIXER_API_URL + 'convert?access_key=' + accessKey + '&from=' + fromCurrency + '&to=' + toCurrency + '&amount=' + amount);
         request.setMethod('GET');
         
         HttpResponse response = http.send(request);
