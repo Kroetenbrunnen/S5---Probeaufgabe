@@ -1,11 +1,11 @@
 <template>
-    <lightning-card title="Currency Converter">
+    <lightning-card title={label.CurrencyConverter}>
         <div class="slds-m-around_medium">
             <div class="slds-grid slds-gutters">
                 <div class="slds-col slds-size_1-of-2">
                     <lightning-combobox
                         name="fromCurrency"
-                        label="From Currency"
+                        label={label.FromCurrency}
                         value={fromCurrency}
                         placeholder="Select a Currency"
                         options={currencyOptions}
@@ -15,7 +15,7 @@
                 <div class="slds-col slds-size_1-of-2">
                     <lightning-combobox
                         name="toCurrency"
-                        label="To Currency"
+                        label={label.ToCurrency}
                         value={toCurrency}
                         placeholder="Select a Currency"
                         options={currencyOptions}
@@ -27,14 +27,14 @@
             <div class="slds-grid slds-gutters slds-m-top_medium">
                 <div class="slds-col slds-size_1-of-2">
                     <lightning-input
-                        label="Amount"
+                        label={label.Amount}
                         value={amount}
                         onchange={handleAmountChange}>
                     </lightning-input>
                 </div>
                 <div class="slds-col slds-size_1-of-2">
                     <lightning-input
-                        label="Converted Amount"
+                        label={label.ConvertedAmount}
                         value={convertedAmount}
                         readonly>
                     </lightning-input>
@@ -42,7 +42,7 @@
             </div>
             <div class="slds-m-top_medium slds-text-align_right">
                 <lightning-button
-                    label="Convert"
+                    label={label.Convert}
                     onclick={handleConvertClick}
                     variant="brand">
                 </lightning-button>

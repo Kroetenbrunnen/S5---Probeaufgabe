@@ -1,5 +1,11 @@
 import { LightningElement, wire } from 'lwc';
 import convertCurrency from '@salesforce/apex/wechselkurs_Ctr.convertCurrency';
+import CurrencyConverter from '@salesforce/label/c.CurrencyConverter'
+import 	FromCurrency from '@salesforce/label/c.FromCurrency'
+import 	ToCurrency from '@salesforce/label/c.ToCurrency'
+import 	Amount from '@salesforce/label/c.Amount'
+import 	ConvertedAmount from '@salesforce/label/c.ConvertedAmount'
+import 	Convert from '@salesforce/label/c.Convert'
 
 export default class CurrencyCalculator extends LightningElement {
     currencyOptions = [  { label: 'United Arab Emirates Dirham', value: 'AED' },
@@ -178,6 +184,15 @@ export default class CurrencyCalculator extends LightningElement {
     toCurrency = '';
     amount = 0;
     convertedAmount = 0;
+
+    label = {
+        CurrencyConverter,
+        FromCurrency,
+        ToCurrency,
+        Amount,
+        ConvertedAmount,
+        Convert
+    }
 
     handlefromCurrencyChange(event){
         this.fromCurrency = event.target.value;
