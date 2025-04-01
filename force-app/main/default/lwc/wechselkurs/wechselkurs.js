@@ -12,6 +12,8 @@ import getExchangeRate from '@salesforce/apex/wechselkurs_Ctr.getExchangeRate';
 import Country from '@salesforce/label/c.Country'
 import ExchangeRate from '@salesforce/label/c.ExchangeRate'
 import ExchangeRates from '@salesforce/label/c.ExchangeRates'
+import Currency from '@salesforce/label/c.Currency'
+import Search from '@salesforce/label/c.Search'
 
 export default class Wechselkurs extends LightningElement {
     isLoading = true;
@@ -26,7 +28,9 @@ export default class Wechselkurs extends LightningElement {
     label = {
         Country,
         ExchangeRate,
-        ExchangeRates
+        ExchangeRates,
+        Currency,
+        Search
     }
 
     @wire(getExchangeRate)
@@ -35,12 +39,12 @@ export default class Wechselkurs extends LightningElement {
             this.exchangeRates = this.formatExchangeRate(data);
             this.filteredRates = this.exchangeRates;
             this.isLoading = false;
-        } else {
-            this.error = error;
-            this.exchangeRates = [];
-        }
-    }
-        
+            } else {
+                this.error = error;
+                this.exchangeRates = [];
+                }
+                }
+                
     /**
     connectedCallback() {
         const response = {
@@ -55,21 +59,21 @@ export default class Wechselkurs extends LightningElement {
                 "GEA": 0.85,
                 "HES": 1.0,
                 "DCS": 110.5,
-                "BFG": 0.85,
-                "ERA": 1.0,
-                "DGA": 110.5,
-                "HRS": 0.85,
-            },
-            success: true,
-            timestamp: 1743152944
-        };
-
+                    "BFG": 0.85,
+                    "ERA": 1.0,
+                    "DGA": 110.5,
+                    "HRS": 0.85,
+                },
+                success: true,
+                timestamp: 1743152944
+            };
+        
         this.exchangeRates = this.formatExchangeRate(response);
         this.filteredRates = this.exchangeRates;
         this.isLoading = false;
     }
     */
-
+    
     formatExchangeRate(response){
         const formatedExchangeRates = Object.keys(response.rates).map(currency => {
             return {
