@@ -1,3 +1,12 @@
+/**
+* @name currencyCalculator
+* @type Lightning Web Component
+* @description Lightning Web Component for the Currency Calculator
+*
+* @version 01.04.2025
+* @author Alec Damm
+*/
+
 import { LightningElement, wire } from 'lwc';
 import convertCurrency from '@salesforce/apex/wechselkurs_Ctr.convertCurrency';
 import CurrencyConverter from '@salesforce/label/c.CurrencyConverter'
